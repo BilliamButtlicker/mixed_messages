@@ -33,6 +33,7 @@ const goodMsg = () => {
     }
 }
 
+// proobably better to create a permanent array to choose from rather than including the actual sentance in the function logic.
 const badMsg = () => {
     i = Math.floor(Math.random()*10);
     switch (i) {
@@ -72,9 +73,16 @@ const firstMsg = () => {
     return msg.join('');
 }
 
+//TODO: test msg creation logic works
 const generateMessage = () => {
     let fullMsg = '';
-    fullMsg = statement() + firstMsg() + secondMsg();
+    let fMsg = firstMsg();
+    let sMsg = secondMsg();
+    let conj = '';
+
+    (fMsg.good == sMsg.good) ? conj = ' and ' : conj = ', but ';
+
+    fullMsg = statement() + fMsg.message + conj + sMsg;
     console.log(fullMsg);
 }
 

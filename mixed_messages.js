@@ -37,30 +37,17 @@ const statement = () => {
     return statements[i];
 }
 
-// builds the first message and replaces the punctuation with a comma.
-const firstMsg = () => { 
-    let msg = goodOrBad();
-    return msg;
-}
-
-// builds the second message and de-capitalises it.
-const secondMsg = () => {
-    let msg = goodOrBad();
-    return msg;
-}
-
-
 // Adjusts the messages based on first or second, and generates the full message with correct conjugation.
 const generateMessage = () => {
     let fullMsg = '';
     let state = statement();
-    let fMsg = firstMsg();
-    let sMsg = secondMsg();
+    let fMsg = goodOrBad();
+    let sMsg = goodOrBad();
     let conj = '';
 
     // checks the two messages aren't the same.
     while (sMsg.message == fMsg.message) {
-        sMsg = secondMsg();
+        sMsg = goodOrBad();
     };
 
     // message conversion logic

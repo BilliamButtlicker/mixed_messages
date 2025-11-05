@@ -2,9 +2,7 @@
 
 ## It creates a random message from 3 strings.
 
-### ideas:
+### The first string is a statement. The second two strings are randomly chosen from arrays of good and bad messages.
+### The second message is conjugated based on whether it and the first message are both good, both bad, or one of each.
 
-+ deliver 1 statement, followed by one good/bad message, then followed by AND or BUT respectively depending on whether the second statement is good/bad.
-+ statement ideas: the wind is strong today...; The cat is now on it's 7th life.; The scarecrows are watching.; The gnome is hiding in the tree stump.; Cold like Autumn showers.; The badgers are coming!; The rabbit dropped his pocketwatch.;
-+ good message ideas: Luck is falling from the trees.; You will find what you didn't need.; 
-+ bad message ideas: You will wish you hadn't.; All is lost.; 
+#### The code currently logs the full message to the console. To return the message instead, simply call generateMessage().

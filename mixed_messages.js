@@ -1,3 +1,7 @@
+const goodMessages = [];
+const badMessages = [];
+const statements = [];
+
 const msgFactory = (msg='', good=true) => {
     return {
         message: msg,
@@ -7,58 +11,13 @@ const msgFactory = (msg='', good=true) => {
 }
 
 const goodMsg = () => {
-    i = Math.floor(Math.random()*10);
-    switch (i) {
-        case 0: 
-            return '';
-        case 1: 
-            return '';
-        case 2: 
-            return '';
-        case 3: 
-            return '';
-        case 4: 
-            return '';
-        case 5: 
-            return '';
-        case 6: 
-            return '';
-        case 7: 
-            return '';
-        case 8: 
-            return '';
-        case 9: 
-            return '';
-        
-    }
+    i = Math.floor(Math.random()*goodMessages.length);
+    return goodMessages[i];
 }
 
-// proobably better to create a permanent array to choose from rather than including the actual sentance in the function logic.
 const badMsg = () => {
-    i = Math.floor(Math.random()*10);
-    switch (i) {
-        case 0: 
-            return '';
-        case 1: 
-            return '';
-        case 2: 
-            return '';
-        case 3: 
-            return '';
-        case 4: 
-            return '';
-        case 5: 
-            return '';
-        case 6: 
-            return '';
-        case 7: 
-            return '';
-        case 8: 
-            return '';
-        case 9: 
-            return '';
-        
-    }
+    i = Math.floor(Math.random()*badMessages.length);
+    return badMessages[i];
 }
 
 const goodOrBad = () => {
@@ -66,11 +25,20 @@ const goodOrBad = () => {
     gb < 1 ? msgFactory(goodMsg(),true) : msgFactory(badMsg(),false);
 }
 
-const firstMsg = () => {
-    let msg = Array.from(goodOrBad().message);
-    msg.pop();
-    msg.push(', ')
-    return msg.join('');
+const firstMsg = () => { 
+    let msg = goodOrBad();
+    let conj = '';
+
+    let punct = Array.from(msg.message);
+    
+    punct.pop();
+    punct.push(', ');
+
+    msg.message = punct.join('');
+}
+
+const secondMsg = () => {
+    let msg = Array.from(goodOrBad().message)
 }
 
 //TODO: test msg creation logic works
@@ -82,7 +50,7 @@ const generateMessage = () => {
 
     (fMsg.good == sMsg.good) ? conj = ' and ' : conj = ', but ';
 
-    fullMsg = statement() + fMsg.message + conj + sMsg;
+    fullMsg = statement() + fMsg.message + conj + sMsg.message;
     console.log(fullMsg);
 }
 

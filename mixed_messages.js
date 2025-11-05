@@ -1,7 +1,7 @@
 // arrays of statements and messages to pull from
-const statements = ['The scarecrows are watching.'];
-const goodMessages = ['You will find what you didn\'t need.'];
-const badMessages = ['You will wish you hadn\'t.'];
+const statements = ['The scarecrows are watching.','The wind is strong today...','The cat is now on it\'s 7th life.','The gnome is hiding in the tree stump.','Cold like Autmn showers.','The badgers are coming!','The rabbit dropped his pocketwatch.'];
+const goodMessages = ['You will find what you didn\'t need.','Luck is falling from the trees.','You left it in the treehouse','Your troubles will melt away.','The faeries are dancing!'];
+const badMessages = ['You will wish you hadn\'t.','The garden is angry.','The mice will eat your cheese.','The windows won\'t open.','The washing machine stole your socks!'];
 
 
 // Factory function for building message objects
@@ -40,25 +40,17 @@ const statement = () => {
 // builds the first message and replaces the punctuation with a comma.
 const firstMsg = () => { 
     let msg = goodOrBad();
-    let punct = Array.from(msg.message);
-    
-    punct.pop();
-
-    msg.message = punct.join('');
     return msg;
 }
 
 // builds the second message and de-capitalises it.
 const secondMsg = () => {
     let msg = goodOrBad();
-
-    msg.message = msg.message.toLowerCase();
-
     return msg;
 }
 
 
-// Works! need to make sure the two messages are not identical though. Need to check this before the messages are modified... maybe add an id or key to each message.
+// Adjusts the messages based on first or second, and generates the full message with correct conjugation.
 const generateMessage = () => {
     let fullMsg = '';
     let state = statement();
@@ -66,12 +58,24 @@ const generateMessage = () => {
     let sMsg = secondMsg();
     let conj = '';
 
-    while (sMsg.message == fMsg.message)
+    // checks the two messages aren't the same.
+    while (sMsg.message == fMsg.message) {
+        sMsg = secondMsg();
+    };
 
+    // message conversion logic
+    let punct = Array.from(fMsg.message);
+    punct.pop();
+    fMsg.message = punct.join('');
+
+    sMsg.message = sMsg.message.toLowerCase();
+
+
+    // conjugates based on whether the messages are both positive/negative or one of each.
     (fMsg.good == sMsg.good) ? conj = ' and ' : conj = ', but ';
 
     fullMsg = state + ' ' + fMsg.message + conj + sMsg.message;
-    console.log(fullMsg);
+    return fullMsg;
 }
 
-generateMessage();
+console.log(generateMessage());

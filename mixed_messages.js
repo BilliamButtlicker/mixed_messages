@@ -25,19 +25,19 @@ const badMsg = () => {
     return badMessages[i];
 }
 
-// selects a good or bad message randomly and sends it to the factory.
-const goodOrBad = () => {
-    let gb = (Math.floor(Math.random()*2));
-    return gb < 1 ? msgFactory(goodMsg(),true) : msgFactory(badMsg(),false);
-}
-
 // selects a random statement
 const statement = () => {
     let i = Math.floor(Math.random()*statements.length);
     return statements[i];
 }
 
-// Adjusts the messages based on first or second, and generates the full message with correct conjugation.
+// selects a good or bad message randomly and sends it to the factory.
+const goodOrBad = () => {
+    let gb = (Math.floor(Math.random()*2));
+    return gb < 1 ? msgFactory(goodMsg(),true) : msgFactory(badMsg(),false);
+}
+
+// Adjusts the messages based on first or second, and returns the full message with correct conjugation.
 const generateMessage = () => {
     let fullMsg = '';
     let state = statement();
@@ -58,7 +58,7 @@ const generateMessage = () => {
     sMsg.message = sMsg.message.toLowerCase();
 
 
-    // conjugates based on whether the messages are both positive/negative or one of each.
+    // conjugates based on whether the messages are both good/bad or one of each.
     (fMsg.good == sMsg.good) ? conj = ' and ' : conj = ', but ';
 
     fullMsg = state + ' ' + fMsg.message + conj + sMsg.message;

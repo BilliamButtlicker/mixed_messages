@@ -1,6 +1,10 @@
 // arrays of statements and messages to pull from
 const statements = ['The scarecrows are watching.','The wind is strong today...','The cat is now on it\'s 7th life.','The gnome is hiding in the tree stump.','Cold like Autmn showers.','The badgers are coming!','The rabbit dropped his pocketwatch.'];
+<<<<<<< HEAD
 const goodMessages = ['You will find what you didn\'t need.','Luck is falling from the trees.','You left it in the treehouse.','Your troubles will melt away.','The faeries are dancing!'];
+=======
+const goodMessages = ['You will find what you didn\'t need.','Luck is falling from the trees.','You left it in the treehouse','Your troubles will melt away.','The faeries are dancing!'];
+>>>>>>> b0172c14d302b60ced93c4741696d4f9eaaf3450
 const badMessages = ['The crows will steal it.','The garden is angry.','The mice will eat your cheese.','The windows won\'t open.','The washing machine stole your socks!'];
 
 
